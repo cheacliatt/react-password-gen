@@ -11,15 +11,13 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 };
 
-app.use(BookController);
-
 app.get("/api/config", (req, res) => {
   res.json({ success: true });
 });
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './client/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, './client/build/index.html'));
+// });
 
 mongoose
   .connect(process.env.MONGODB_URI || "mongodb://localhost/react-password-gen", {
